@@ -155,8 +155,8 @@ def create_donut(DonutColor, CreamColor):
     sparkset.count = random.randint(400, 700)
     sparkset.render_type = "OBJECT"
     sparkset.instance_object = bpy.data.objects["Sprink"]
-    sparkset.particle_size = 0.06
-    sparkset.size_random = random.uniform(0.3, 0.6)
+    sparkset.particle_size = 0.08
+    sparkset.size_random = random.uniform(0.4, 0.6)
     sparkset.use_rotations = True
     sparkset.phase_factor = random.uniform(0, 2)
     sparkset.phase_factor_random = random.uniform(0.5, 2)
