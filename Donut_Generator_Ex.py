@@ -2,7 +2,6 @@ import bpy
 import random
 
 # THIS IS FREE ADDON FOR BLENDER USERS DONT CHANGE STUFF HERE (Klo ga gw ngamuk)
-
 bl_info = {
     "name": "DonutGen",
     "description": "Simple Donut Generator",
@@ -11,7 +10,6 @@ bl_info = {
     "blender": (4, 1, 0),
     "category": "Object"
 }
-
 
 def create_donut(DonutColor, CreamColor):
     # MAIN OBJS
@@ -40,14 +38,17 @@ def create_donut(DonutColor, CreamColor):
             return new_collection
 
     sprinkles_collection = get_or_create_collection("Sprinks Particle")
+    sprinkles = bpy.data.objects.get("Sprink")
 
-    bpy.ops.mesh.primitive_cylinder_add(radius=0.03, depth=0.3, location=(0, 0, -10))
-    sprinkles = bpy.context.object
-    sprinkles.name = "Sprink"
+    if not sprinkles:
+        bpy.ops.mesh.primitive_cylinder_add(radius=0.03, depth=0.3, location=(0, 0, -10))
+        sprinkles = bpy.context.object
+        sprinkles.name = "Sprink"
 
     if sprinkles_collection:
-        bpy.context.collection.objects.unlink(sprinkles)
-        sprinkles_collection.objects.link(sprinkles)
+        if sprinkles.name not in sprinkles_collection.objects:
+            bpy.context.collection.objects.unlink(sprinkles)
+            sprinkles_collection.objects.link(sprinkles)
 
 
     # MODELLING
