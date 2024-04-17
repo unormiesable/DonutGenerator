@@ -170,7 +170,7 @@ def create_donut(DonutColor, CreamColor):
     
     # SELECT EMPTY
     bpy.context.view_layer.objects.active = empty_obj
-
+    empty_obj.select_set(True)
 
 class SimplePanel(bpy.types.Panel):
     bl_label = "Donut Generator"
